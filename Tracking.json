@@ -1,0 +1,189 @@
+[
+    {
+        "id": "21883576d5d14e4a",
+        "type": "tab",
+        "label": "Map",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "ce289539c6f525bb",
+        "type": "mqtt in",
+        "z": "21883576d5d14e4a",
+        "name": "",
+        "topic": "MAP",
+        "qos": "2",
+        "datatype": "auto-detect",
+        "broker": "383d7d5669cee1d7",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 110,
+        "y": 180,
+        "wires": [
+            [
+                "d71ef587deaf9126"
+            ]
+        ]
+    },
+    {
+        "id": "34980c88e820a08a",
+        "type": "change",
+        "z": "21883576d5d14e4a",
+        "name": "Coordinates",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload.lat",
+                "pt": "msg",
+                "to": "payload.latValue",
+                "tot": "msg",
+                "dc": true
+            },
+            {
+                "t": "set",
+                "p": "payload.lon",
+                "pt": "msg",
+                "to": "payload.lonValue",
+                "tot": "msg"
+            },
+            {
+                "t": "set",
+                "p": "payload.name",
+                "pt": "msg",
+                "to": "MAP",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 490,
+        "y": 180,
+        "wires": [
+            [
+                "135aa9b5eccdd62b"
+            ]
+        ]
+    },
+    {
+        "id": "d71ef587deaf9126",
+        "type": "json",
+        "z": "21883576d5d14e4a",
+        "name": "",
+        "property": "payload",
+        "action": "obj",
+        "pretty": false,
+        "x": 250,
+        "y": 180,
+        "wires": [
+            [
+                "34980c88e820a08a",
+                "66e9cd5bd0308eeb"
+            ]
+        ]
+    },
+    {
+        "id": "66e9cd5bd0308eeb",
+        "type": "debug",
+        "z": "21883576d5d14e4a",
+        "name": "debug 11",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 440,
+        "y": 80,
+        "wires": []
+    },
+    {
+        "id": "135aa9b5eccdd62b",
+        "type": "ui_worldmap",
+        "z": "21883576d5d14e4a",
+        "group": "d50ddfbcb09f473e",
+        "order": 0,
+        "width": 0,
+        "height": 0,
+        "name": "Tracking",
+        "lat": "",
+        "lon": "",
+        "zoom": "",
+        "layer": "OSMG",
+        "cluster": "",
+        "maxage": "",
+        "usermenu": "show",
+        "layers": "hide",
+        "panit": "true",
+        "panlock": "false",
+        "zoomlock": "false",
+        "hiderightclick": "false",
+        "coords": "deg",
+        "showgrid": "true",
+        "showruler": "true",
+        "allowFileDrop": "true",
+        "path": "/worldmap",
+        "overlist": "DR,CO,RA,DN,HM",
+        "maplist": "OSMG,OSMC,EsriC,EsriS,EsriT,EsriDG,UKOS",
+        "mapname": "",
+        "mapurl": "",
+        "mapopt": "",
+        "mapwms": false,
+        "x": 740,
+        "y": 180,
+        "wires": []
+    },
+    {
+        "id": "383d7d5669cee1d7",
+        "type": "mqtt-broker",
+        "name": "",
+        "broker": "http://broker.mqtt.cool",
+        "port": "1883",
+        "clientid": "",
+        "autoConnect": true,
+        "usetls": false,
+        "protocolVersion": "4",
+        "keepalive": "60",
+        "cleansession": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthPayload": "",
+        "birthMsg": {},
+        "closeTopic": "",
+        "closeQos": "0",
+        "closePayload": "",
+        "closeMsg": {},
+        "willTopic": "",
+        "willQos": "0",
+        "willPayload": "",
+        "willMsg": {},
+        "userProps": "",
+        "sessionExpiry": ""
+    },
+    {
+        "id": "d50ddfbcb09f473e",
+        "type": "ui_group",
+        "name": "Tracking",
+        "tab": "7f740a1aa8d71e47",
+        "order": 1,
+        "disp": true,
+        "width": "6",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "7f740a1aa8d71e47",
+        "type": "ui_tab",
+        "name": "MAP",
+        "icon": "dashboard",
+        "disabled": false,
+        "hidden": false
+    }
+]
